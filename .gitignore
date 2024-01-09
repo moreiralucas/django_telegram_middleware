@@ -1,0 +1,43 @@
+# Ignore compiled Python files
+*.pyc
+*.pyo
+__pycache__
+
+# Ignore the virtual environment
+env/
+venv/
+*.venv/
+
+# Ignore local development settings
+*.sqlite3
+*.env
+
+# Ignore secret files and credentials
+*.secret_key
+*.env
+
+# Ignore log files
+*.log
+
+# Ignore database backups
+*.backup
+
+# Ignore media and static files (only if using a separate service like AWS S3)
+/media/
+/static/
+
+# Ignore development-specific files
+.DS_Store
+.idea/
+.vscode/
+
+# Ignore distribution files and build artifacts
+/dist/
+/build/
+
+# Ignore package cache
+*.egg-info/
+*.pyc
+
+# Ignore the Django migration files
+**/migrations/
