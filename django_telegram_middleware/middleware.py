@@ -34,14 +34,14 @@ class DjangoTelegramMiddleware:
                     f"Error: [status code {response.status_code}]: {response.reason_phrase}\n"
                     f"Method {request.method} - URL: {request.path}\n"
                     f"User: {request.user}\n"
-                    f"Content: {response.content.decode('utf-8')}\n"
+                    f"Content: {response.content.decode('utf-8')[:3000]}\n"
                 )
 
                 # Send the error message to the Telegram bot
                 # Replace <chat_id> with the actual chat ID you want to send the message to
                 requests.post(
                     f"https://api.telegram.org/bot{telegram_bot_token}/sendMessage",
-                    data={"chat_id": chat_id, "text": error_message},
+                    data={"chat_id": chat_id, "text": error_message[:4096]},
                     timeout=10,
                 )
             except Exception as error:
