@@ -20,7 +20,7 @@ class DjangoTelegramMiddleware:
     def __call__(self, request):
         response = self.get_response(request)
 
-        if response.status_code >= 400 and getattr(settings, "DJANGO_TELEGRAM_MIDDLEWARE", False) is True and not getattr(settings, "DEBUG", True):
+        if response.status_code >= 400 and getattr(settings, "DJANGO_TELEGRAM_MIDDLEWARE", False) is True and not getattr(settings, "DEBUG", True) and response.status_code not in getattr(settings, "DJANGO_TELEGRAM_DENIED_LIST", []):
             self.send_telegram_message(request, response)
 
         return response
